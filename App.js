@@ -1,5 +1,7 @@
 import React from "react";
 import {
+  Box,
+  Button,
   Text,
   Link,
   HStack,
@@ -11,8 +13,10 @@ import {
   extendTheme,
   VStack,
   Code,
+  useColorModeValue,
 } from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
+//import NativeBaseIcon from "./components/NativeBaseIcon";
+import ToDoList from "./components/ToDoList";
 
 // Define the config
 const config = {
@@ -24,30 +28,14 @@ const config = {
 export const theme = extendTheme({ config });
 
 export default function App() {
+
   return (
-    <NativeBaseProvider>
-      <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
-        px={4}
-        flex={1}
-      >
-        <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Code>App.js</Code>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
-        </VStack>
-      </Center>
+    <NativeBaseProvider theme={theme}>
+      <Center flex={1} bg={useColorModeValue('warmGray.50', 'coolGray.800')}>
+        <Heading>Cobra Kai To-Do App</Heading>
+      <ToDoList />
+    <ToggleDarkMode />
+    </Center>
     </NativeBaseProvider>
   );
 }
